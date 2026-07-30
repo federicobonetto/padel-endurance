@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b0d" />
+  <meta name="description" content="Padel Endurance: torneos, perfiles, grupos, canchas y llaves de pádel en Olavarría." />
+  <title>Padel Endurance | Torneos de pádel en Olavarría</title>
+  <link rel="icon" href="assets/padel-endurance-logo-definitivo.png" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/padel-endurance-poster.webp" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="site-video-background" aria-hidden="true">
+    <video class="volley-background-video" autoplay muted loop playsinline preload="metadata">
+      <source src="https://videos.pexels.com/video-files/34449209/14597473_2160_3840_30fps.mp4" type="video/mp4" />
+    </video>
+    <div class="volley-video-overlay"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#inicio" aria-label="Padel Endurance, inicio">
+      <img class="brand-logo" src="assets/padel-endurance-logo-definitivo.png" alt="Padel Endurance" />
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#torneos">Torneos</a>
+      <a href="#jugadores">Jugadores</a>
+      <a href="#grupos">Grupos</a>
+      <a href="#canchas">Canchas</a>
+      <a href="#llaves">Llaves</a>
+      <button class="btn btn-small btn-primary" data-open="player-modal">Crear perfil</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid"></div>
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="live-dot"></span> CIRCUITO LOCAL · OLAVARRÍA</div>
+        <h1>EL PÁDEL DE LA CIUDAD.<br/><span>TODO EN UN SOLO LUGAR.</span></h1>
+        <p>Perfiles de jugadores, torneos, grupos, horarios, canchas y llaves actualizadas. Entrá a competir. Quedate por la comunidad.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-open="register-modal">Inscribirme</button>
+          <a class="btn btn-ghost" href="#llaves">Ver llaves en vivo</a>
+        </div>
+        <div class="hero-metrics">
+          <div><strong data-count="184">0</strong><span>jugadores</span></div>
+          <div><strong data-count="12">0</strong><span>torneos</span></div>
+          <div><strong data-count="7">0</strong><span>complejos</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Afiche de Padel Endurance">
+        <div class="poster-wrap">
+          <img src="assets/padel-endurance-poster.webp" alt="Afiche Padel Endurance, inscripción abierta" />
+          <div class="poster-sheen"></div>
+          <span class="poster-tag">INSCRIPCIÓN ABIERTA</span>
+        </div>
+        <div class="floating-card next-match">
+          <span>PRÓXIMO PARTIDO</span>
+          <strong>Vie · 21:30</strong>
+          <small>Cancha Central · Grupo A</small>
+        </div>
+      </div>
+
+      <div class="scroll-cue"><span></span>Descubrí el circuito</div>
+    </section>
+
+    <section class="volley-video-transition" aria-label="Transición audiovisual de pádel">
+      <div class="volley-video-copy reveal">
+        <span>INTENSIDAD EN LA RED</span>
+        <strong>ANTICIPÁ. ATACÁ. DEFINÍ.</strong>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Novedades del circuito">
+      <div class="ticker-track">
+        <span>INSCRIPCIONES ABIERTAS</span><i>✦</i><span>7MA CABALLEROS</span><i>✦</i><span>6TA MIXTA</span><i>✦</i><span>LLAVES EN VIVO</span><i>✦</i><span>RESULTADOS AL INSTANTE</span><i>✦</i>
+        <span>INSCRIPCIONES ABIERTAS</span><i>✦</i><span>7MA CABALLEROS</span><i>✦</i><span>6TA MIXTA</span><i>✦</i><span>LLAVES EN VIVO</span><i>✦</i><span>RESULTADOS AL INSTANTE</span><i>✦</i>
+      </div>
+    </section>
+
+    <section class="section tournaments" id="torneos">
+      <div class="section-heading reveal">
+        <div><span class="kicker">PRÓXIMOS DESAFÍOS</span><h2>Elegí tu torneo.<br/>Dejá tu marca.</h2></div>
+        <p>Información centralizada para que cada jugador sepa dónde, cuándo y contra quién juega.</p>
+      </div>
+      <div class="tournament-grid" id="tournament-grid"></div>
+    </section>
+
+    <section class="section players" id="jugadores">
+      <div class="section-heading players-heading reveal">
+        <div class="players-heading-copy"><span class="kicker magenta">LA COMUNIDAD</span><h2>Perfiles que cuentan<br/>cómo jugás.</h2></div>
+        <div class="heading-actions players-toolbar">
+          <label class="search-field"><span>⌕</span><input id="player-search" type="search" placeholder="Buscar jugador / categoría" /></label>
+          <button class="btn btn-ghost" data-open="manage-profiles-modal">Gestionar mis perfiles</button>
+          <button class="btn btn-primary" data-open="player-modal">+ Crear mi perfil</button>
+        </div>
+      </div>
+      <div class="player-grid" id="player-grid"></div>
+    </section>
+
+    <section class="section groups" id="grupos">
+      <div class="section-heading reveal">
+        <div><span class="kicker">FASE DE GRUPOS</span><h2>Todo claro.<br/>Partido a partido.</h2></div>
+        <div class="filters">
+          <select id="group-tournament" aria-label="Seleccionar torneo">
+            <option value="endurance7">Copa Endurance · 7MA Caballeros</option>
+            <option value="mixto6">Circuito Nocturno · 6TA Mixto</option>
+          </select>
+          <div class="segmented" id="group-tabs" aria-label="Seleccionar grupo"></div>
+        </div>
+      </div>
+      <div class="group-action reveal">
+        <img src="assets/groups-action.webp" alt="Jugador de pádel preparándose para definir un punto" loading="lazy" />
+        <div class="group-action-copy">
+          <span class="kicker">SEGUÍ TU CAMINO</span>
+          <strong>Resultados, próximos cruces y posiciones sin perderte nada.</strong>
+        </div>
+      </div>
+      <div class="group-layout reveal">
+        <div class="standings-card">
+          <div class="card-title"><span>POSICIONES</span><small>Actualizado hace 3 min.</small></div>
+          <div class="standings-table" id="standings-table"></div>
+        </div>
+        <div class="matches-card">
+          <div class="card-title"><span>PARTIDOS DEL GRUPO</span><small>Fase regular</small></div>
+          <div id="group-matches"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section brackets" id="llaves">
+      <div class="section-heading reveal">
+        <div><span class="kicker">CAMINO A LA FINAL</span><h2>La llave global.<br/>En tiempo real.</h2></div>
+        <div class="filters bracket-filters">
+          <select id="bracket-tournament" aria-label="Seleccionar torneo">
+            <option value="endurance7">Copa Endurance · 7MA Caballeros</option>
+            <option value="mixto6">Circuito Nocturno · 6TA Mixto</option>
+          </select>
+          <button class="btn btn-live"><span class="live-dot"></span> EN VIVO</button>
+        </div>
+      </div>
+      <div class="bracket-shell reveal">
+        <div class="bracket-toolbar">
+          <span>Llave completa del torneo</span>
+        </div>
+        <div class="bracket-viewport">
+          <div class="bracket" id="bracket"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section venues" id="canchas">
+      <div class="section-heading reveal">
+        <div><span class="kicker magenta">GOOGLE MAPS · OLAVARRÍA</span><h2>Todas las canchas.<br/>En un mapa real.</h2></div>
+        <p>La sección consulta Google Places para localizar clubes y canchas de pádel de Olavarría, con dirección, valoración y acceso directo a Google Maps.</p>
+      </div>
+
+      <div class="maps-shell reveal">
+        <aside class="maps-sidebar">
+          <div class="maps-toolbar">
+            <label class="maps-search">
+              <span>⌕</span>
+              <input id="maps-query" value="" placeholder="Buscar cancha o complejo" aria-label="Buscar canchas en Google Maps" />
+            </label>
+            <button class="btn btn-primary btn-small" id="maps-refresh" type="button">Buscar</button>
+          </div>
+
+          <div class="maps-summary">
+            <div><strong id="maps-count">—</strong><span>lugares encontrados</span></div>
+            <span id="maps-status">Buscando canchas de pádel en Olavarría…</span>
+          </div>
+
+          <div class="maps-api-setup map-connected" id="maps-api-setup">
+            <span class="kicker">GOOGLE MAPS CONECTADO</span>
+            <h3>Mapa automático de Olavarría</h3>
+            <p>La web consulta Google Places y muestra los clubes y canchas de pádel registrados en la ciudad.</p>
+            <input id="google-maps-key" type="hidden" value="" />
+            <button class="btn btn-primary full-button" id="save-maps-key" type="button" hidden>Actualizar mapa</button>
+            <small>Podés usar el buscador superior para localizar un complejo específico.</small>
+          </div>
+
+          <div class="venue-list" id="venue-list" aria-live="polite">
+            <div class="venue-list-placeholder">
+              <strong>Cargando ubicaciones…</strong>
+              <span>Consultando clubes y canchas de pádel registrados en Google Maps.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="google-map-wrap">
+          <div id="google-map" role="application" aria-label="Mapa de canchas de pádel en Olavarría"></div>
+          <div class="map-placeholder" id="map-placeholder">
+            <div class="map-placeholder-grid"></div>
+            <div class="map-placeholder-copy">
+              <span class="map-pin-demo">⌖</span>
+              <strong>Mapa de canchas de Olavarría</strong>
+              <small>El mapa cargará automáticamente las ubicaciones registradas en Google Maps.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="cta-card reveal">
+        <div class="cta-ball"></div>
+        <span class="kicker">TU PRÓXIMO PARTIDO EMPIEZA ACÁ</span>
+        <h2>Creá tu perfil.<br/>Entrá al circuito.</h2>
+        <p>Una identidad deportiva para participar, seguir tus resultados y formar parte de la comunidad Padel Endurance.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-open="player-modal">Crear perfil de jugador</button>
+          <button class="btn btn-ghost" data-open="register-modal">Inscribir una pareja</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><img class="brand-logo" src="assets/padel-endurance-logo-definitivo.png" alt="Padel Endurance" /></a>
+    <p>El circuito digital de pádel de Olavarría.</p>
+    <div class="footer-links"><a href="#torneos">Torneos</a><a href="#jugadores">Jugadores</a><a href="#llaves">Llaves</a><a href="mailto:hola@padelendurance.com">Contacto</a></div>
+    <small>© <span id="year"></span> Padel Endurance. Todos los derechos reservados.</small>
+  </footer>
+
+  <div class="modal" id="player-modal" role="dialog" aria-modal="true" aria-labelledby="player-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      <span class="kicker">PERFIL DE JUGADOR</span>
+      <h2 id="player-title">Que la ciudad sepa cómo jugás.</h2>
+      <form id="player-form">
+        <input type="hidden" name="profileId" value="" />
+        <div class="form-grid">
+          <label>Nombre y apellido<input required name="name" autocomplete="name" placeholder="Ej. Federico Bonetto" /></label>
+          <label>Fecha de nacimiento<input required name="birthdate" type="date" /></label>
+          <label>Ciudad<input required name="city" value="Olavarría" /></label>
+          <label>Categoría<select required name="category"><option>8VA</option><option selected>7MA</option><option>6TA</option><option>5TA</option><option>4TA</option><option>3RA</option></select></label>
+          <label>Lado preferido<select name="side"><option>Drive</option><option>Revés</option><option>Indistinto</option></select></label>
+          <label>Posición / estilo<input name="style" placeholder="Ej. Revés agresivo" /></label>
+          <label>Club habitual<input name="club" placeholder="Ej. Endurance Club" /></label>
+          <label>WhatsApp <span class="private">privado</span><input required name="phone" type="tel" placeholder="+54 9..." /></label>
+          <label>Email <span class="private">privado</span><input required name="email" type="email" autocomplete="email" /></label>
+          <label>Contraseña <span class="private">privada</span><input required name="password" type="password" minlength="6" autocomplete="new-password" placeholder="Mínimo 6 caracteres" /></label>
+          <label>Repetir contraseña<input required name="passwordConfirm" type="password" minlength="6" autocomplete="new-password" /></label>
+          <label class="file-label">Foto de perfil<input name="photo" type="file" accept="image/*" /><span>Elegir imagen</span></label>
+          <label class="full">Bio deportiva<textarea name="bio" rows="3" placeholder="Contá brevemente tu forma de jugar y qué buscás en el circuito."></textarea></label>
+        </div>
+        <div class="form-note">Tus datos de contacto y tu contraseña no se muestran públicamente.</div>
+        <button class="btn btn-primary full-button" id="player-submit" type="submit">Guardar mi perfil</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="modal" id="manage-profiles-modal" role="dialog" aria-modal="true" aria-labelledby="manage-profiles-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel compact">
+      <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      <span class="kicker magenta">PRIVACIDAD Y CONTROL</span>
+      <h2 id="manage-profiles-title">Gestioná o eliminá tu perfil.</h2>
+      <p class="modal-intro">Ingresá con el email y la contraseña usados al crear el perfil. Desde acá vas a poder editar tus datos o eliminarlo.</p>
+      <form id="profile-login-form" class="profile-login-form">
+        <label>Email<input required name="email" type="email" autocomplete="email" /></label>
+        <label>Contraseña<input required name="password" type="password" autocomplete="current-password" /></label>
+        <button class="btn btn-primary full-button" type="submit">Entrar a mi perfil</button>
+        <button class="forgot-password-link" id="forgot-password-link" type="button">Olvidé mi contraseña</button>
+      </form>
+      <form id="password-reset-form" class="profile-login-form password-reset-form" hidden>
+        <div class="reset-head">
+          <strong>Restablecer contraseña</strong>
+          <button type="button" class="reset-back" id="reset-back">Volver</button>
+        </div>
+        <p class="form-note">Ingresá el email del perfil y elegí una contraseña nueva. En esta versión de demostración, el cambio se realiza únicamente en este dispositivo.</p>
+        <label>Email<input required name="email" type="email" autocomplete="email" /></label>
+        <label>Nueva contraseña<input required name="password" type="password" minlength="6" autocomplete="new-password" /></label>
+        <label>Repetir contraseña<input required name="passwordConfirm" type="password" minlength="6" autocomplete="new-password" /></label>
+        <button class="btn btn-primary full-button" type="submit">Restablecer contraseña</button>
+      </form>
+      <div id="managed-profile-list" class="managed-profile-list"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel compact">
+      <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      <span class="kicker magenta">INSCRIPCIÓN</span>
+      <h2 id="register-title">Reservá tu lugar en la cancha.</h2>
+      <form id="register-form">
+        <label>Torneo<select name="tournament"><option>Copa Endurance · 7MA Caballeros</option><option>Circuito Nocturno · 6TA Mixto</option><option>Challenger Primavera · 8VA</option></select></label>
+        <div class="form-grid two">
+          <label>Jugador 1<input required name="player1" /></label>
+          <label>Jugador 2<input required name="player2" /></label>
+          <label>Categoría<select name="category"><option>8VA</option><option selected>7MA</option><option>6TA</option><option>5TA</option></select></label>
+          <label>Preferencia horaria<select name="schedule"><option>Sin preferencia</option><option>Después de las 18</option><option>Después de las 20</option><option>Fin de semana</option></select></label>
+        </div>
+        <label>WhatsApp de contacto<input required name="phone" type="tel" /></label>
+        <button class="btn btn-primary full-button" type="submit">Enviar preinscripción</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
